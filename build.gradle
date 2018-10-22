@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+
+repositories {
+    jcenter()
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    compile 'com.github.cs125-illinois:wavfile:0.1'
+}
+
+checkstyle {
+    toolVersion "8.12"
+    checkstyleTest.enabled = false
+    configFile = new File(rootDir, "config/checkstyle.xml")
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    destinationDir = file('docs')
+    title = "Lab8"
+    options.addBooleanOption('html5', true)
+}
+
+// vim: ts=4:sw=4:et:ft=groovy
